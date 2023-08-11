@@ -1,0 +1,17 @@
+<%= render 'flight_info'%>
+<%= form_with model: @booking do |b|%>
+  <%= b.hidden_field :tickets, value: params[:bookings][:tickets] %>
+  <%= b.hidden_field :flight_id, value: params[:bookings][:flight_id] %>
+  <% params[:bookings][:tickets].to_i.times do%>
+    <%= b.fields_for :passengers, @booking.passengers.build do |f|%>
+      <div>
+        <%= f.label :name, "Name:" %>
+        <%= f.text_field :name %>
+        <%= f.label :email, "Email:" %>
+        <%= f.text_field :email %>
+       </div>
+    <% end %>
+  <% end %>
+  <%= b.submit "Confirm" %>
+<% end %>
+

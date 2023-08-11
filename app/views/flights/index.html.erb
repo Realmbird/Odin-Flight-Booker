@@ -1,0 +1,76 @@
+<%= stylesheet_link_tag "main" %>
+  <%= form_with url: "/flights", method: :get, :html => {:class => "formsearch"}, scope: :flights do |form| %>
+    <%# Added flights condition because search form gave error since selected gave error for when params don't exist, added if condition so it doesn't give error before form submission.%>
+    <%if params[:flights]%>
+      <div>
+        <%= form.label :start, "Date: " %>
+        <%# Not sure how to keep date value if I give it a blank default value, tried default or select%>
+        <% if params[:flights][:'start(1i)'] != "" && params[:flights][:'start(2i)'] != "" && params[:flights][:'start(3i)'] != "" %>
+        <% date = Date.new params[:flights][:'start(1i)'].to_i, params[:flights][:'start(2i)'].to_i, params[:flights][:'start(3i)'].to_i%>
+        <%= form.date_select :start, include_blank: true, :order => [:month, :day, :year], selected: date%>
+        <% else %>
+            <%= form.date_select :start, include_blank: true, :order => [:month, :day, :year]%>
+        <% end %>
+      </div>
+      
+      <div>
+          <%= form.label :arrival_airport, "Arrival Airport: " %>
+           <%# Not sure but, it seems like selected attribute is needed for where to work in the index action%>
+        <%= form.collection_select :arrival_airport, Airport.all, :id, :code, prompt: 'Select Airport', include_blank: true, selected: params[:flights][:arrival_airport] %>
+      </div>
+      
+      <div>
+        <%= form.label :departure_airport, "Departure Airport: " %>
+        <%= form.collection_select :departure_airport, Airport.all, :id, :code, prompt: 'Select Airport', include_blank: true, selected: params[:flights][:departure_airport] %>
+      </div>
+    
+      
+      <div>
+        <%= form.label :passengers, "Passengers: "%>
+        <%= form.select :passengers, [1,2,3,4], prompt: 'Select Passengers', include_blank: true, selected: params[:flights][:passengers] %>
+      </div>
+
+      <%= form.submit "Search"%>
+    <% else %>
+      <div>
+        <%= form.label :start, "Date: " %>
+        <%= form.date_select :start, :order => [:month, :day, :year], prompt: ["Select Month", "Select Day", "Select Year"] %>
+      </div>
+        
+      <div>
+        <%= form.label :arrival_airport, "Arrival Airport: " %>
+        <%= form.collection_select :arrival_airport, Airport.all, :id, :code, prompt: 'Select Airport'%>
+      </div>
+        
+      <div>
+       <%= form.label :departure_airport, "Departure Airport: " %>
+       <%= form.collection_select :departure_airport, Airport.all, :id, :code, prompt: 'Select Airport' %>
+      </div>
+      
+        
+      <div>
+        <%= form.label :passengers, "Passengers: "%>
+        <%= form.select :passengers, [1,2,3,4], prompt: 'Select Passengers' %>
+      </div>
+
+      <%= form.submit "Search"%>
+    <% end %>
+  <% end %>
+<%= form_with url: "/bookings/new", method: :get, scope: :bookings do |booking|%>
+  <% if params[:flights] && params[:flights][:passengers]%>
+    <%= booking.hidden_field :tickets, value: params[:flights][:passengers]%>
+  <% end %>
+  <% @flights.each do |flight| %>
+      <div class = "flight">
+      <h2>Flight ID <%= flight.id%></h2>
+      <p>Date: <%= flight.start.strftime("%m/%d/%Y") %></p>
+      <p>Depature Time: <%= flight.start.strftime("%H:%M") %></p>
+      <p>Estimated Flight Time: <%=  Time.at(flight.duration).utc.strftime("%H:%M:%S")%></p>
+      <p>Arrival Airport: <%= flight.arrival_airport.code%></p>
+      <p>Departure Airport: <%= flight.departure_airport.code%></p>
+      <%= booking.radio_button :flight_id, flight.id%>
+      </div>
+  <% end %>
+   <%= booking.submit "Book flight"%>
+<% end %>
+

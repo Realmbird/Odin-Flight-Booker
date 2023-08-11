@@ -1,0 +1,9 @@
+
+<div class = "flight">
+  <h2>Flight ID <%= @flight.id%></h2>
+  <p>Date: <%= @flight.start.strftime("%m/%d/%Y") %></p>
+  <p>Depature Time: <%= @flight.start.strftime("%H:%M") %></p>
+  <p>Estimated Flight Time: <%=  Time.at(@flight.duration).utc.strftime("%H:%M:%S")%></p>
+  <p>Arrival Airport: <%= @flight.arrival_airport.code%></p>
+  <p>Departure Airport: <%= @flight.departure_airport.code%></p>
+</div>

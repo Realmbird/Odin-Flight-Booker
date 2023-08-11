@@ -1,0 +1,9 @@
+<%= render 'flight_info'%>
+<% @booking.passengers.each do |p|%>
+  <div>
+    <div>Passenger <%= p.id%></div>
+    <div>Name: <%= p.name %></div>
+    <div>Email: <%= p.email%></div>
+    <br>
+  </div>
+<% end %>
