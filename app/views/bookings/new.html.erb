@@ -12,6 +12,14 @@
        </div>
     <% end %>
   <% end %>
+  <div data-controller="passenger" data-passenger-passenger-count-value = "<%= params[:bookings][:tickets] %>" :>
+      <h1 data-passenger-target = "display">Passenger Count</h1>
+      <div>
+        <button type="button" data-action = "passenger#addPassenger">Add Passenger</button>
+        <button type="button" data-action = "passenger#deletePassenger">Delete Passenger</button>
+      </div>
+  </div>
+
   <%= b.submit "Confirm" %>
 <% end %>
 
