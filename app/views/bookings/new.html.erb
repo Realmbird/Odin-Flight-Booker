@@ -1,24 +1,39 @@
 <%= render 'flight_info'%>
-<%= form_with model: @booking do |b|%>
+<%= form_with model: @booking, data: {controller: "passenger", passenger_passenger_count_value: params[:bookings][:tickets]} do |b|%>
   <%= b.hidden_field :tickets, value: params[:bookings][:tickets] %>
   <%= b.hidden_field :flight_id, value: params[:bookings][:flight_id] %>
-  <% params[:bookings][:tickets].to_i.times do%>
+  <div data-passenger-target = "list">
+     <% params[:bookings][:tickets].to_i.times do |t| %>
+  
     <%= b.fields_for :passengers, @booking.passengers.build do |f|%>
-      <div>
+      <div id = "<%= t + 1 %>">
         <%= f.label :name, "Name:" %>
         <%= f.text_field :name %>
         <%= f.label :email, "Email:" %>
         <%= f.text_field :email %>
        </div>
+      <% end %>
     <% end %>
-  <% end %>
-  <div data-controller="passenger" data-passenger-passenger-count-value = "<%= params[:bookings][:tickets] %>" :>
+  </div>
+ 
+  <div>
       <h1 data-passenger-target = "display">Passenger Count</h1>
       <div>
         <button type="button" data-action = "passenger#addPassenger">Add Passenger</button>
         <button type="button" data-action = "passenger#deletePassenger">Delete Passenger</button>
       </div>
   </div>
+
+  <template id="templatepassenger">
+  <%= b.fields_for :passengers, @booking.passengers.build, html: {id: "passengers"} do |f|%>
+      <div id = "placeholderId">
+        <%= f.label :name, "Name:" %>
+        <%= f.text_field :name %>
+        <%= f.label :email, "Email:" %>
+        <%= f.text_field :email %>
+       </div>
+  <% end %>
+</template>
 
   <%= b.submit "Confirm" %>
 <% end %>
