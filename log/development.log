@@ -39370,3 +39370,311 @@ PassengerMailer#confirmation_email: processed outbound mail in 53.3ms
   Rendered passenger_mailer/confirmation_email.text.erb within layouts/mailer (Duration: 0.6ms | Allocations: 118)
   Rendered layout layouts/mailer.text.erb (Duration: 1.1ms | Allocations: 309)
 PassengerMailer#confirmation_email: processed outbound mail in 46.8ms
+Started GET "/bookings/new?bookings%5Btickets%5D=3&bookings%5Bflight_id%5D=6&commit=Book+flight" for ::1 at 2023-09-04 08:11:16 -0700
+Processing by BookingsController#new as HTML
+  Parameters: {"bookings"=>{"tickets"=>"3", "flight_id"=>"6"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (2.8ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:5:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (0.9ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/bookings/_flight_info.html.erb:7
+  [1m[36mAirport Load (0.1ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/_flight_info.html.erb:8
+  Rendered bookings/_flight_info.html.erb (Duration: 17.2ms | Allocations: 7331)
+  Rendered bookings/new.html.erb within layouts/application (Duration: 26.3ms | Allocations: 11383)
+  Rendered layout layouts/application.html.erb (Duration: 126.0ms | Allocations: 55020)
+Completed 200 OK in 192ms (Views: 123.9ms | ActiveRecord: 15.9ms | Allocations: 76418)
+
+
+Started GET "/bookings/new?bookings%5Btickets%5D=3&bookings%5Bflight_id%5D=6&commit=Book+flight" for ::1 at 2023-09-04 09:04:48 -0700
+Processing by BookingsController#new as HTML
+  Parameters: {"bookings"=>{"tickets"=>"3", "flight_id"=>"6"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (0.3ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:5:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (0.3ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/bookings/_flight_info.html.erb:7
+  [1m[36mAirport Load (0.2ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/_flight_info.html.erb:8
+  Rendered bookings/_flight_info.html.erb (Duration: 9.7ms | Allocations: 5915)
+  Rendered bookings/new.html.erb within layouts/application (Duration: 13.5ms | Allocations: 8531)
+  Rendered layout layouts/application.html.erb (Duration: 27.9ms | Allocations: 23874)
+Completed 200 OK in 61ms (Views: 28.9ms | ActiveRecord: 5.9ms | Allocations: 38479)
+
+
+Started POST "/bookings" for ::1 at 2023-09-04 09:05:10 -0700
+Processing by BookingsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "booking"=>{"tickets"=>"3", "flight_id"=>"6", "passengers_attributes"=>{"0"=>{"name"=>"Christopher", "email"=>"christoragebird@gmail.com"}}}, "commit"=>"Confirm"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/bookings_controller.rb:15:in `create'
+  [1m[36mFlight Load (0.2ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:15:in `create'
+  [1m[36mBooking Create (2.7ms)[0m  [1m[32mINSERT INTO "bookings" ("created_at", "updated_at", "flight_id", "tickets") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2023-09-04 16:05:10.019947"], ["updated_at", "2023-09-04 16:05:10.019947"], ["flight_id", 6], ["tickets", 3]]
+  ↳ app/controllers/bookings_controller.rb:15:in `create'
+  [1m[36mPassenger Create (0.6ms)[0m  [1m[32mINSERT INTO "passengers" ("name", "email", "created_at", "updated_at", "booking_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Christopher"], ["email", "christoragebird@gmail.com"], ["created_at", "2023-09-04 16:05:10.024719"], ["updated_at", "2023-09-04 16:05:10.024719"], ["booking_id", 3]]
+  ↳ app/controllers/bookings_controller.rb:15:in `create'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/bookings_controller.rb:15:in `create'
+Completed 500 Internal Server Error in 47ms (ActiveRecord: 4.9ms | Allocations: 12355)
+
+
+  
+NoMethodError (undefined method `passengers_attributes' for #<Booking id: 3, created_at: "2023-09-04 16:05:10.019947000 +0000", updated_at: "2023-09-04 16:05:10.019947000 +0000", flight_id: 6, tickets: 3>
+Did you mean?  passengers_attributes=):
+  
+app/controllers/bookings_controller.rb:16:in `create'
+Started GET "/bookings/new?bookings%5Btickets%5D=3&bookings%5Bflight_id%5D=6&commit=Book+flight" for ::1 at 2023-09-04 09:28:09 -0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by BookingsController#new as HTML
+  Parameters: {"bookings"=>{"tickets"=>"3", "flight_id"=>"6"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (0.3ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:5:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (0.2ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/bookings/_flight_info.html.erb:7
+  [1m[36mAirport Load (0.4ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/_flight_info.html.erb:8
+  Rendered bookings/_flight_info.html.erb (Duration: 19.5ms | Allocations: 7383)
+  Rendered bookings/new.html.erb within layouts/application (Duration: 27.9ms | Allocations: 11697)
+  Rendered layout layouts/application.html.erb (Duration: 94.8ms | Allocations: 47764)
+Completed 200 OK in 153ms (Views: 95.0ms | ActiveRecord: 10.8ms | Allocations: 73559)
+
+
+Started POST "/bookings" for ::1 at 2023-09-04 09:28:16 -0700
+Processing by BookingsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "booking"=>{"tickets"=>"3", "flight_id"=>"6", "passengers_attributes"=>{"0"=>{"name"=>"Christopher", "email"=>"christoragebird@gmail.com"}}}, "commit"=>"Confirm"}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/bookings_controller.rb:15:in `create'
+  [1m[36mFlight Load (0.3ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:15:in `create'
+  [1m[36mBooking Create (0.4ms)[0m  [1m[32mINSERT INTO "bookings" ("created_at", "updated_at", "flight_id", "tickets") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2023-09-04 16:28:16.886543"], ["updated_at", "2023-09-04 16:28:16.886543"], ["flight_id", 6], ["tickets", 3]]
+  ↳ app/controllers/bookings_controller.rb:15:in `create'
+  [1m[36mPassenger Create (0.3ms)[0m  [1m[32mINSERT INTO "passengers" ("name", "email", "created_at", "updated_at", "booking_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Christopher"], ["email", "christoragebird@gmail.com"], ["created_at", "2023-09-04 16:28:16.889857"], ["updated_at", "2023-09-04 16:28:16.889857"], ["booking_id", 4]]
+  ↳ app/controllers/bookings_controller.rb:15:in `create'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/bookings_controller.rb:15:in `create'
+Completed 500 Internal Server Error in 45ms (ActiveRecord: 2.2ms | Allocations: 10841)
+
+
+  
+NameError (undefined local variable or method `each' for #<BookingsController:0x0000000000be28>
+
+      @booking.passengers each do |passenger| 
+                          ^^^^):
+  
+app/controllers/bookings_controller.rb:16:in `create'
+Started GET "/bookings/new?bookings%5Btickets%5D=3&bookings%5Bflight_id%5D=6&commit=Book+flight" for ::1 at 2023-09-04 09:28:30 -0700
+Processing by BookingsController#new as HTML
+  Parameters: {"bookings"=>{"tickets"=>"3", "flight_id"=>"6"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (0.3ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:5:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (0.2ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/bookings/_flight_info.html.erb:7
+  [1m[36mAirport Load (0.2ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/_flight_info.html.erb:8
+  Rendered bookings/_flight_info.html.erb (Duration: 11.5ms | Allocations: 6115)
+  Rendered bookings/new.html.erb within layouts/application (Duration: 18.4ms | Allocations: 8704)
+  Rendered layout layouts/application.html.erb (Duration: 34.0ms | Allocations: 24059)
+Completed 200 OK in 76ms (Views: 34.3ms | ActiveRecord: 9.3ms | Allocations: 36642)
+
+
+Started POST "/bookings" for ::1 at 2023-09-04 09:28:36 -0700
+Processing by BookingsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "booking"=>{"tickets"=>"3", "flight_id"=>"6", "passengers_attributes"=>{"0"=>{"name"=>"Christopher", "email"=>"christoragebird@gmail.com"}}}, "commit"=>"Confirm"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/bookings_controller.rb:15:in `create'
+  [1m[36mFlight Load (0.3ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:15:in `create'
+  [1m[36mBooking Create (1.1ms)[0m  [1m[32mINSERT INTO "bookings" ("created_at", "updated_at", "flight_id", "tickets") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2023-09-04 16:28:36.889738"], ["updated_at", "2023-09-04 16:28:36.889738"], ["flight_id", 6], ["tickets", 3]]
+  ↳ app/controllers/bookings_controller.rb:15:in `create'
+  [1m[36mPassenger Create (0.3ms)[0m  [1m[32mINSERT INTO "passengers" ("name", "email", "created_at", "updated_at", "booking_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Christopher"], ["email", "christoragebird@gmail.com"], ["created_at", "2023-09-04 16:28:36.893394"], ["updated_at", "2023-09-04 16:28:36.893394"], ["booking_id", 5]]
+  ↳ app/controllers/bookings_controller.rb:15:in `create'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/bookings_controller.rb:15:in `create'
+  [1m[36mPassenger Load (0.2ms)[0m  [1m[34mSELECT "passengers".* FROM "passengers" WHERE "passengers"."booking_id" = $1[0m  [["booking_id", 5]]
+  ↳ app/controllers/bookings_controller.rb:16:in `create'
+Redirected to http://localhost:3000/bookings/5
+Completed 302 Found in 80ms (ActiveRecord: 3.0ms | Allocations: 31979)
+
+
+Started GET "/bookings/5" for ::1 at 2023-09-04 09:28:36 -0700
+Processing by BookingsController#show as TURBO_STREAM
+  Parameters: {"id"=>"5"}
+  [1m[36mBooking Load (1.1ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" WHERE "bookings"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:26:in `show'
+  [1m[36mFlight Load (0.2ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:27:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/show.html.erb within layouts/application
+  [1m[36mAirport Load (0.2ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/bookings/_flight_info.html.erb:7
+  [1m[36mAirport Load (0.2ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/_flight_info.html.erb:8
+  Rendered bookings/_flight_info.html.erb (Duration: 3.4ms | Allocations: 1452)
+  [1m[36mPassenger Load (0.2ms)[0m  [1m[34mSELECT "passengers".* FROM "passengers" WHERE "passengers"."booking_id" = $1[0m  [["booking_id", 5]]
+  ↳ app/views/bookings/show.html.erb:2
+  Rendered bookings/show.html.erb within layouts/application (Duration: 5.9ms | Allocations: 2467)
+  Rendered layout layouts/application.html.erb (Duration: 9.5ms | Allocations: 5119)
+Completed 200 OK in 16ms (Views: 9.7ms | ActiveRecord: 1.8ms | Allocations: 7336)
+
+
+  [1m[36mBooking Load (0.3ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" WHERE "bookings"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mPassenger Load (0.3ms)[0m  [1m[34mSELECT "passengers".* FROM "passengers" WHERE "passengers"."booking_id" = $1[0m  [["booking_id", 5]]
+Started GET "/bookings/new?bookings%5Btickets%5D=3&bookings%5Bflight_id%5D=6&commit=Book+flight" for ::1 at 2023-09-04 09:31:20 -0700
+Processing by BookingsController#new as HTML
+  Parameters: {"bookings"=>{"tickets"=>"3", "flight_id"=>"6"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (0.1ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:5:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (0.1ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/bookings/_flight_info.html.erb:7
+  [1m[36mAirport Load (0.2ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/_flight_info.html.erb:8
+  Rendered bookings/_flight_info.html.erb (Duration: 12.5ms | Allocations: 6115)
+  Rendered bookings/new.html.erb within layouts/application (Duration: 16.5ms | Allocations: 8722)
+  Rendered layout layouts/application.html.erb (Duration: 49.4ms | Allocations: 24078)
+Completed 200 OK in 94ms (Views: 49.1ms | ActiveRecord: 14.2ms | Allocations: 36675)
+
+
+Started POST "/bookings" for ::1 at 2023-09-04 09:31:32 -0700
+Processing by BookingsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "booking"=>{"tickets"=>"3", "flight_id"=>"6", "passengers_attributes"=>{"0"=>{"name"=>"Christopher", "email"=>"christoragebird@gmail.com"}}}, "commit"=>"Confirm"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/bookings_controller.rb:15:in `create'
+  [1m[36mFlight Load (0.2ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:15:in `create'
+  [1m[36mBooking Create (0.3ms)[0m  [1m[32mINSERT INTO "bookings" ("created_at", "updated_at", "flight_id", "tickets") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2023-09-04 16:31:32.638040"], ["updated_at", "2023-09-04 16:31:32.638040"], ["flight_id", 6], ["tickets", 3]]
+  ↳ app/controllers/bookings_controller.rb:15:in `create'
+  [1m[36mPassenger Create (0.2ms)[0m  [1m[32mINSERT INTO "passengers" ("name", "email", "created_at", "updated_at", "booking_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Christopher"], ["email", "christoragebird@gmail.com"], ["created_at", "2023-09-04 16:31:32.640119"], ["updated_at", "2023-09-04 16:31:32.640119"], ["booking_id", 6]]
+  ↳ app/controllers/bookings_controller.rb:15:in `create'
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/bookings_controller.rb:15:in `create'
+  [1m[36mPassenger Load (0.2ms)[0m  [1m[34mSELECT "passengers".* FROM "passengers" WHERE "passengers"."booking_id" = $1[0m  [["booking_id", 6]]
+  ↳ app/controllers/bookings_controller.rb:16:in `create'
+  Rendering layout layouts/mailer.html.erb
+  Rendering passenger_mailer/confirmation_email.html.erb within layouts/mailer
+  Rendered passenger_mailer/confirmation_email.html.erb within layouts/mailer (Duration: 0.4ms | Allocations: 151)
+  Rendered layout layouts/mailer.html.erb (Duration: 0.9ms | Allocations: 371)
+  Rendering layout layouts/mailer.text.erb
+  Rendering passenger_mailer/confirmation_email.text.erb within layouts/mailer
+  Rendered passenger_mailer/confirmation_email.text.erb within layouts/mailer (Duration: 0.3ms | Allocations: 118)
+  Rendered layout layouts/mailer.text.erb (Duration: 0.8ms | Allocations: 306)
+PassengerMailer#confirmation_email: processed outbound mail in 11.2ms
+Redirected to http://localhost:3000/bookings/6
+Completed 302 Found in 1710ms (ActiveRecord: 2.9ms | Allocations: 25087)
+
+
+Started GET "/bookings/6" for ::1 at 2023-09-04 09:31:34 -0700
+Processing by BookingsController#show as TURBO_STREAM
+  Parameters: {"id"=>"6"}
+  [1m[36mBooking Load (0.3ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" WHERE "bookings"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:26:in `show'
+  [1m[36mFlight Load (0.6ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:27:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/show.html.erb within layouts/application
+  [1m[36mAirport Load (0.2ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/bookings/_flight_info.html.erb:7
+  [1m[36mAirport Load (0.3ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/_flight_info.html.erb:8
+  Rendered bookings/_flight_info.html.erb (Duration: 7.7ms | Allocations: 1451)
+  [1m[36mPassenger Load (0.3ms)[0m  [1m[34mSELECT "passengers".* FROM "passengers" WHERE "passengers"."booking_id" = $1[0m  [["booking_id", 6]]
+  ↳ app/views/bookings/show.html.erb:2
+  Rendered bookings/show.html.erb within layouts/application (Duration: 11.4ms | Allocations: 2216)
+  Rendered layout layouts/application.html.erb (Duration: 16.5ms | Allocations: 4883)
+Completed 200 OK in 23ms (Views: 16.5ms | ActiveRecord: 1.7ms | Allocations: 6954)
+
+
+Started GET "/bookings/6" for ::1 at 2023-09-04 09:32:04 -0700
+Processing by BookingsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mBooking Load (0.2ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" WHERE "bookings"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:26:in `show'
+  [1m[36mFlight Load (0.1ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:27:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/show.html.erb within layouts/application
+  [1m[36mAirport Load (2.8ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/bookings/_flight_info.html.erb:7
+  [1m[36mAirport Load (0.1ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/_flight_info.html.erb:8
+  Rendered bookings/_flight_info.html.erb (Duration: 6.2ms | Allocations: 1403)
+  [1m[36mPassenger Load (0.4ms)[0m  [1m[34mSELECT "passengers".* FROM "passengers" WHERE "passengers"."booking_id" = $1[0m  [["booking_id", 6]]
+  ↳ app/views/bookings/show.html.erb:2
+  Rendered bookings/show.html.erb within layouts/application (Duration: 8.5ms | Allocations: 2152)
+  Rendered layout layouts/application.html.erb (Duration: 13.2ms | Allocations: 4634)
+Completed 200 OK in 16ms (Views: 10.4ms | ActiveRecord: 3.6ms | Allocations: 5876)
+
+
+Started GET "/bookings/new?bookings%5Btickets%5D=3&bookings%5Bflight_id%5D=6&commit=Book+flight" for ::1 at 2023-09-04 09:32:06 -0700
+Processing by BookingsController#new as HTML
+  Parameters: {"bookings"=>{"tickets"=>"3", "flight_id"=>"6"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (0.6ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:5:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (0.6ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/bookings/_flight_info.html.erb:7
+  [1m[36mAirport Load (2.4ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/_flight_info.html.erb:8
+  Rendered bookings/_flight_info.html.erb (Duration: 6.9ms | Allocations: 1403)
+  Rendered bookings/new.html.erb within layouts/application (Duration: 13.4ms | Allocations: 3790)
+  Rendered layout layouts/application.html.erb (Duration: 19.8ms | Allocations: 6038)
+Completed 200 OK in 28ms (Views: 18.9ms | ActiveRecord: 3.6ms | Allocations: 7238)
+
+
+Started POST "/bookings" for ::1 at 2023-09-04 09:32:29 -0700
+Processing by BookingsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "booking"=>{"tickets"=>"3", "flight_id"=>"6", "passengers_attributes"=>{"0"=>{"name"=>"Christopher", "email"=>"christopherstoragebird@gmail.com"}}}, "commit"=>"Confirm"}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/bookings_controller.rb:15:in `create'
+  [1m[36mFlight Load (0.2ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:15:in `create'
+  [1m[36mBooking Create (0.3ms)[0m  [1m[32mINSERT INTO "bookings" ("created_at", "updated_at", "flight_id", "tickets") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2023-09-04 16:32:29.632518"], ["updated_at", "2023-09-04 16:32:29.632518"], ["flight_id", 6], ["tickets", 3]]
+  ↳ app/controllers/bookings_controller.rb:15:in `create'
+  [1m[36mPassenger Create (0.2ms)[0m  [1m[32mINSERT INTO "passengers" ("name", "email", "created_at", "updated_at", "booking_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Christopher"], ["email", "christopherstoragebird@gmail.com"], ["created_at", "2023-09-04 16:32:29.634428"], ["updated_at", "2023-09-04 16:32:29.634428"], ["booking_id", 7]]
+  ↳ app/controllers/bookings_controller.rb:15:in `create'
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/bookings_controller.rb:15:in `create'
+  [1m[36mPassenger Load (0.2ms)[0m  [1m[34mSELECT "passengers".* FROM "passengers" WHERE "passengers"."booking_id" = $1[0m  [["booking_id", 7]]
+  ↳ app/controllers/bookings_controller.rb:16:in `create'
+  Rendering layout layouts/mailer.html.erb
+  Rendering passenger_mailer/confirmation_email.html.erb within layouts/mailer
+  Rendered passenger_mailer/confirmation_email.html.erb within layouts/mailer (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/mailer.html.erb (Duration: 0.2ms | Allocations: 93)
+  Rendering layout layouts/mailer.text.erb
+  Rendering passenger_mailer/confirmation_email.text.erb within layouts/mailer
+  Rendered passenger_mailer/confirmation_email.text.erb within layouts/mailer (Duration: 0.0ms | Allocations: 7)
+  Rendered layout layouts/mailer.text.erb (Duration: 0.1ms | Allocations: 92)
+PassengerMailer#confirmation_email: processed outbound mail in 4.7ms
+Redirected to http://localhost:3000/bookings/7
+Completed 302 Found in 1647ms (ActiveRecord: 2.3ms | Allocations: 17157)
+
+
+Started GET "/bookings/7" for ::1 at 2023-09-04 09:32:31 -0700
+Processing by BookingsController#show as TURBO_STREAM
+  Parameters: {"id"=>"7"}
+  [1m[36mBooking Load (0.3ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" WHERE "bookings"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:26:in `show'
+  [1m[36mFlight Load (0.2ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:27:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/show.html.erb within layouts/application
+  [1m[36mAirport Load (0.3ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/bookings/_flight_info.html.erb:7
+  [1m[36mAirport Load (0.2ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/_flight_info.html.erb:8
+  Rendered bookings/_flight_info.html.erb (Duration: 5.8ms | Allocations: 1403)
+  [1m[36mPassenger Load (0.2ms)[0m  [1m[34mSELECT "passengers".* FROM "passengers" WHERE "passengers"."booking_id" = $1[0m  [["booking_id", 7]]
+  ↳ app/views/bookings/show.html.erb:2
+  Rendered bookings/show.html.erb within layouts/application (Duration: 9.8ms | Allocations: 2155)
+  Rendered layout layouts/application.html.erb (Duration: 16.1ms | Allocations: 4631)
+Completed 200 OK in 21ms (Views: 16.1ms | ActiveRecord: 1.2ms | Allocations: 5877)
+
+
