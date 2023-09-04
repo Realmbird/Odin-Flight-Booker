@@ -39049,3 +39049,217 @@ Processing by BookingsController#new as HTML
 Completed 200 OK in 25ms (Views: 18.5ms | ActiveRecord: 3.3ms | Allocations: 9284)
 
 
+Started GET "/rails/mailers/passenger_mailer" for ::1 at 2023-09-03 19:29:52 -0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::MailersController#preview as HTML
+  Parameters: {"path"=>"passenger_mailer"}
+  Rendering layout /home/thor/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/railties-7.0.6/lib/rails/templates/layouts/application.html.erb
+  Rendering /home/thor/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/railties-7.0.6/lib/rails/templates/rails/mailers/mailer.html.erb within layouts/application
+  Rendered /home/thor/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/railties-7.0.6/lib/rails/templates/rails/mailers/mailer.html.erb within layouts/application (Duration: 1.9ms | Allocations: 1266)
+  Rendered layout /home/thor/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/railties-7.0.6/lib/rails/templates/layouts/application.html.erb (Duration: 2.8ms | Allocations: 1578)
+Completed 200 OK in 137ms (Views: 7.6ms | ActiveRecord: 0.0ms | Allocations: 41120)
+
+
+Started GET "/rails/mailers/passenger_mailer/confirmation_email" for ::1 at 2023-09-03 19:29:55 -0700
+Processing by Rails::MailersController#preview as HTML
+  Parameters: {"path"=>"passenger_mailer/confirmation_email"}
+  [1m[36mPassenger Load (1.2ms)[0m  [1m[34mSELECT "passengers".* FROM "passengers" ORDER BY "passengers"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ test/mailers/previews/passenger_mailer_preview.rb:4:in `confirmation_email'
+  Rendering layout layouts/mailer.html.erb
+  Rendering passenger_mailer/confirmation_email.html.erb within layouts/mailer
+  Rendered passenger_mailer/confirmation_email.html.erb within layouts/mailer (Duration: 0.4ms | Allocations: 147)
+  Rendered layout layouts/mailer.html.erb (Duration: 1.4ms | Allocations: 369)
+  Rendering layout layouts/mailer.text.erb
+  Rendering passenger_mailer/confirmation_email.text.erb within layouts/mailer
+  Rendered passenger_mailer/confirmation_email.text.erb within layouts/mailer (Duration: 0.3ms | Allocations: 118)
+  Rendered layout layouts/mailer.text.erb (Duration: 0.8ms | Allocations: 306)
+PassengerMailer#confirmation_email: processed outbound mail in 23.1ms
+  Rendering /home/thor/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/railties-7.0.6/lib/rails/templates/rails/mailers/email.html.erb
+  Rendered /home/thor/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/railties-7.0.6/lib/rails/templates/rails/mailers/email.html.erb (Duration: 4.6ms | Allocations: 8211)
+Completed 200 OK in 53ms (Views: 6.3ms | ActiveRecord: 4.5ms | Allocations: 34565)
+
+
+Started GET "/rails/mailers/passenger_mailer/confirmation_email?part=text%2Fhtml" for ::1 at 2023-09-03 19:29:55 -0700
+Processing by Rails::MailersController#preview as HTML
+  Parameters: {"part"=>"text/html", "path"=>"passenger_mailer/confirmation_email"}
+  [1m[36mPassenger Load (0.2ms)[0m  [1m[34mSELECT "passengers".* FROM "passengers" ORDER BY "passengers"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ test/mailers/previews/passenger_mailer_preview.rb:4:in `confirmation_email'
+  Rendering layout layouts/mailer.html.erb
+  Rendering passenger_mailer/confirmation_email.html.erb within layouts/mailer
+  Rendered passenger_mailer/confirmation_email.html.erb within layouts/mailer (Duration: 0.1ms | Allocations: 8)
+  Rendered layout layouts/mailer.html.erb (Duration: 1.0ms | Allocations: 95)
+  Rendering layout layouts/mailer.text.erb
+  Rendering passenger_mailer/confirmation_email.text.erb within layouts/mailer
+  Rendered passenger_mailer/confirmation_email.text.erb within layouts/mailer (Duration: 0.0ms | Allocations: 7)
+  Rendered layout layouts/mailer.text.erb (Duration: 0.3ms | Allocations: 92)
+PassengerMailer#confirmation_email: processed outbound mail in 54.7ms
+  Rendering text template
+  Rendered text template (Duration: 0.0ms | Allocations: 9)
+Completed 200 OK in 68ms (Views: 4.0ms | ActiveRecord: 0.2ms | Allocations: 12543)
+
+
+Started GET "/rails/mailers/passenger_mailer/confirmation_email?part=text%2Fplain" for ::1 at 2023-09-03 19:29:57 -0700
+Processing by Rails::MailersController#preview as HTML
+  Parameters: {"part"=>"text/plain", "path"=>"passenger_mailer/confirmation_email"}
+  [1m[36mPassenger Load (1.5ms)[0m  [1m[34mSELECT "passengers".* FROM "passengers" ORDER BY "passengers"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ test/mailers/previews/passenger_mailer_preview.rb:4:in `confirmation_email'
+  Rendering layout layouts/mailer.html.erb
+  Rendering passenger_mailer/confirmation_email.html.erb within layouts/mailer
+  Rendered passenger_mailer/confirmation_email.html.erb within layouts/mailer (Duration: 0.1ms | Allocations: 11)
+  Rendered layout layouts/mailer.html.erb (Duration: 0.6ms | Allocations: 101)
+  Rendering layout layouts/mailer.text.erb
+  Rendering passenger_mailer/confirmation_email.text.erb within layouts/mailer
+  Rendered passenger_mailer/confirmation_email.text.erb within layouts/mailer (Duration: 0.0ms | Allocations: 7)
+  Rendered layout layouts/mailer.text.erb (Duration: 0.4ms | Allocations: 92)
+PassengerMailer#confirmation_email: processed outbound mail in 12.3ms
+  Rendering text template
+  Rendered text template (Duration: 0.0ms | Allocations: 4)
+Completed 200 OK in 19ms (Views: 1.0ms | ActiveRecord: 1.5ms | Allocations: 12325)
+
+
+Started GET "/rails/mailers/passenger_mailer/confirmation_email.txt?part=text%2Fhtml" for ::1 at 2023-09-03 19:29:58 -0700
+Processing by Rails::MailersController#preview as TEXT
+  Parameters: {"part"=>"text/html", "path"=>"passenger_mailer/confirmation_email"}
+  [1m[36mPassenger Load (0.6ms)[0m  [1m[34mSELECT "passengers".* FROM "passengers" ORDER BY "passengers"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ test/mailers/previews/passenger_mailer_preview.rb:4:in `confirmation_email'
+  Rendering layout layouts/mailer.html.erb
+  Rendering passenger_mailer/confirmation_email.html.erb within layouts/mailer
+  Rendered passenger_mailer/confirmation_email.html.erb within layouts/mailer (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/mailer.html.erb (Duration: 0.6ms | Allocations: 94)
+  Rendering layout layouts/mailer.text.erb
+  Rendering passenger_mailer/confirmation_email.text.erb within layouts/mailer
+  Rendered passenger_mailer/confirmation_email.text.erb within layouts/mailer (Duration: 0.0ms | Allocations: 7)
+  Rendered layout layouts/mailer.text.erb (Duration: 0.2ms | Allocations: 92)
+PassengerMailer#confirmation_email: processed outbound mail in 7.4ms
+  Rendering text template
+  Rendered text template (Duration: 0.0ms | Allocations: 4)
+Completed 200 OK in 15ms (Views: 1.4ms | ActiveRecord: 0.6ms | Allocations: 12054)
+
+
+Started GET "/rails/mailers/passenger_mailer/confirmation_email.html?part=text%2Fplain" for ::1 at 2023-09-03 19:30:01 -0700
+Processing by Rails::MailersController#preview as HTML
+  Parameters: {"part"=>"text/plain", "path"=>"passenger_mailer/confirmation_email"}
+  [1m[36mPassenger Load (0.2ms)[0m  [1m[34mSELECT "passengers".* FROM "passengers" ORDER BY "passengers"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ test/mailers/previews/passenger_mailer_preview.rb:4:in `confirmation_email'
+  Rendering layout layouts/mailer.html.erb
+  Rendering passenger_mailer/confirmation_email.html.erb within layouts/mailer
+  Rendered passenger_mailer/confirmation_email.html.erb within layouts/mailer (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/mailer.html.erb (Duration: 0.2ms | Allocations: 93)
+  Rendering layout layouts/mailer.text.erb
+  Rendering passenger_mailer/confirmation_email.text.erb within layouts/mailer
+  Rendered passenger_mailer/confirmation_email.text.erb within layouts/mailer (Duration: 0.0ms | Allocations: 7)
+  Rendered layout layouts/mailer.text.erb (Duration: 0.4ms | Allocations: 92)
+PassengerMailer#confirmation_email: processed outbound mail in 9.4ms
+  Rendering text template
+  Rendered text template (Duration: 0.0ms | Allocations: 4)
+Completed 200 OK in 15ms (Views: 0.7ms | ActiveRecord: 0.2ms | Allocations: 12011)
+
+
+Started GET "/rails/mailers/passenger_mailer/confirmation_email.txt?part=text%2Fhtml" for ::1 at 2023-09-03 19:41:55 -0700
+Processing by Rails::MailersController#preview as TEXT
+  Parameters: {"part"=>"text/html", "path"=>"passenger_mailer/confirmation_email"}
+  [1m[36mPassenger Load (0.3ms)[0m  [1m[34mSELECT "passengers".* FROM "passengers" ORDER BY "passengers"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ test/mailers/previews/passenger_mailer_preview.rb:4:in `confirmation_email'
+  Rendering layout layouts/mailer.html.erb
+  Rendering passenger_mailer/confirmation_email.html.erb within layouts/mailer
+  Rendered passenger_mailer/confirmation_email.html.erb within layouts/mailer (Duration: 0.1ms | Allocations: 8)
+  Rendered layout layouts/mailer.html.erb (Duration: 0.4ms | Allocations: 94)
+  Rendering layout layouts/mailer.text.erb
+  Rendering passenger_mailer/confirmation_email.text.erb within layouts/mailer
+  Rendered passenger_mailer/confirmation_email.text.erb within layouts/mailer (Duration: 0.0ms | Allocations: 7)
+  Rendered layout layouts/mailer.text.erb (Duration: 0.4ms | Allocations: 92)
+PassengerMailer#confirmation_email: processed outbound mail in 7.5ms
+  Rendering text template
+  Rendered text template (Duration: 0.0ms | Allocations: 4)
+Completed 200 OK in 28ms (Views: 1.9ms | ActiveRecord: 7.0ms | Allocations: 14967)
+
+
+Started GET "/rails/mailers/passenger_mailer/confirmation_email.html?part=text%2Fplain" for ::1 at 2023-09-03 19:41:56 -0700
+Processing by Rails::MailersController#preview as HTML
+  Parameters: {"part"=>"text/plain", "path"=>"passenger_mailer/confirmation_email"}
+  [1m[36mPassenger Load (0.4ms)[0m  [1m[34mSELECT "passengers".* FROM "passengers" ORDER BY "passengers"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ test/mailers/previews/passenger_mailer_preview.rb:4:in `confirmation_email'
+  Rendering layout layouts/mailer.html.erb
+  Rendering passenger_mailer/confirmation_email.html.erb within layouts/mailer
+  Rendered passenger_mailer/confirmation_email.html.erb within layouts/mailer (Duration: 0.1ms | Allocations: 8)
+  Rendered layout layouts/mailer.html.erb (Duration: 0.5ms | Allocations: 93)
+  Rendering layout layouts/mailer.text.erb
+  Rendering passenger_mailer/confirmation_email.text.erb within layouts/mailer
+  Rendered passenger_mailer/confirmation_email.text.erb within layouts/mailer (Duration: 0.0ms | Allocations: 7)
+  Rendered layout layouts/mailer.text.erb (Duration: 1.7ms | Allocations: 92)
+PassengerMailer#confirmation_email: processed outbound mail in 7.9ms
+  Rendering text template
+  Rendered text template (Duration: 0.1ms | Allocations: 4)
+Completed 200 OK in 15ms (Views: 0.7ms | ActiveRecord: 0.4ms | Allocations: 12016)
+
+
+  [1m[36mPassenger Load (0.2ms)[0m  [1m[34mSELECT "passengers".* FROM "passengers" ORDER BY "passengers"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  Rendering layout layouts/mailer.html.erb
+  Rendering passenger_mailer/confirmation_email.html.erb within layouts/mailer
+  Rendered passenger_mailer/confirmation_email.html.erb within layouts/mailer (Duration: 1.5ms | Allocations: 368)
+  Rendered layout layouts/mailer.html.erb (Duration: 2.6ms | Allocations: 622)
+  Rendering layout layouts/mailer.text.erb
+  Rendering passenger_mailer/confirmation_email.text.erb within layouts/mailer
+  Rendered passenger_mailer/confirmation_email.text.erb within layouts/mailer (Duration: 0.3ms | Allocations: 118)
+  Rendered layout layouts/mailer.text.erb (Duration: 0.7ms | Allocations: 309)
+PassengerMailer#confirmation_email: processed outbound mail in 40.2ms
+  [1m[36mPassenger Load (0.2ms)[0m  [1m[34mSELECT "passengers".* FROM "passengers" ORDER BY "passengers"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  Rendering layout layouts/mailer.html.erb
+  Rendering passenger_mailer/confirmation_email.html.erb within layouts/mailer
+  Rendered passenger_mailer/confirmation_email.html.erb within layouts/mailer (Duration: 0.7ms | Allocations: 368)
+  Rendered layout layouts/mailer.html.erb (Duration: 1.3ms | Allocations: 622)
+  Rendering layout layouts/mailer.text.erb
+  Rendering passenger_mailer/confirmation_email.text.erb within layouts/mailer
+  Rendered passenger_mailer/confirmation_email.text.erb within layouts/mailer (Duration: 0.2ms | Allocations: 118)
+  Rendered layout layouts/mailer.text.erb (Duration: 0.7ms | Allocations: 309)
+PassengerMailer#confirmation_email: processed outbound mail in 45.7ms
+  [1m[36mPassenger Load (0.4ms)[0m  [1m[34mSELECT "passengers".* FROM "passengers" ORDER BY "passengers"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  Rendering layout layouts/mailer.html.erb
+  Rendering passenger_mailer/confirmation_email.html.erb within layouts/mailer
+  Rendered passenger_mailer/confirmation_email.html.erb within layouts/mailer (Duration: 0.0ms | Allocations: 11)
+  Rendered layout layouts/mailer.html.erb (Duration: 0.3ms | Allocations: 102)
+  Rendering layout layouts/mailer.text.erb
+  Rendering passenger_mailer/confirmation_email.text.erb within layouts/mailer
+  Rendered passenger_mailer/confirmation_email.text.erb within layouts/mailer (Duration: 0.0ms | Allocations: 7)
+  Rendered layout layouts/mailer.text.erb (Duration: 0.2ms | Allocations: 92)
+PassengerMailer#confirmation_email: processed outbound mail in 3.8ms
+  [1m[36mPassenger Load (0.3ms)[0m  [1m[34mSELECT "passengers".* FROM "passengers" ORDER BY "passengers"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  Rendering layout layouts/mailer.html.erb
+  Rendering passenger_mailer/confirmation_email.html.erb within layouts/mailer
+  Rendered passenger_mailer/confirmation_email.html.erb within layouts/mailer (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/mailer.html.erb (Duration: 0.2ms | Allocations: 93)
+  Rendering layout layouts/mailer.text.erb
+  Rendering passenger_mailer/confirmation_email.text.erb within layouts/mailer
+  Rendered passenger_mailer/confirmation_email.text.erb within layouts/mailer (Duration: 0.0ms | Allocations: 7)
+  Rendered layout layouts/mailer.text.erb (Duration: 0.1ms | Allocations: 92)
+PassengerMailer#confirmation_email: processed outbound mail in 3.1ms
+  [1m[36mPassenger Load (0.3ms)[0m  [1m[34mSELECT "passengers".* FROM "passengers" ORDER BY "passengers"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  Rendering layout layouts/mailer.html.erb
+  Rendering passenger_mailer/confirmation_email.html.erb within layouts/mailer
+  Rendered passenger_mailer/confirmation_email.html.erb within layouts/mailer (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/mailer.html.erb (Duration: 0.2ms | Allocations: 93)
+  Rendering layout layouts/mailer.text.erb
+  Rendering passenger_mailer/confirmation_email.text.erb within layouts/mailer
+  Rendered passenger_mailer/confirmation_email.text.erb within layouts/mailer (Duration: 0.0ms | Allocations: 7)
+  Rendered layout layouts/mailer.text.erb (Duration: 0.1ms | Allocations: 92)
+PassengerMailer#confirmation_email: processed outbound mail in 3.8ms
+  [1m[36mPassenger Load (0.4ms)[0m  [1m[34mSELECT "passengers".* FROM "passengers" ORDER BY "passengers"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  Rendering layout layouts/mailer.html.erb
+  Rendering passenger_mailer/confirmation_email.html.erb within layouts/mailer
+  Rendered passenger_mailer/confirmation_email.html.erb within layouts/mailer (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/mailer.html.erb (Duration: 0.2ms | Allocations: 93)
+  Rendering layout layouts/mailer.text.erb
+  Rendering passenger_mailer/confirmation_email.text.erb within layouts/mailer
+  Rendered passenger_mailer/confirmation_email.text.erb within layouts/mailer (Duration: 0.0ms | Allocations: 7)
+  Rendered layout layouts/mailer.text.erb (Duration: 0.2ms | Allocations: 92)
+PassengerMailer#confirmation_email: processed outbound mail in 3.4ms
+  [1m[36mPassenger Load (0.4ms)[0m  [1m[34mSELECT "passengers".* FROM "passengers" ORDER BY "passengers"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  Rendering layout layouts/mailer.html.erb
+  Rendering passenger_mailer/confirmation_email.html.erb within layouts/mailer
+  Rendered passenger_mailer/confirmation_email.html.erb within layouts/mailer (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/mailer.html.erb (Duration: 0.2ms | Allocations: 93)
+  Rendering layout layouts/mailer.text.erb
+  Rendering passenger_mailer/confirmation_email.text.erb within layouts/mailer
+  Rendered passenger_mailer/confirmation_email.text.erb within layouts/mailer (Duration: 0.0ms | Allocations: 7)
+  Rendered layout layouts/mailer.text.erb (Duration: 0.2ms | Allocations: 92)
+PassengerMailer#confirmation_email: processed outbound mail in 3.8ms
